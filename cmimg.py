@@ -27,7 +27,7 @@ for i in dir_list:
         make = str(get_file_meta(i)["Make"])
         file_ext = os.path.splitext(i)[1]
         if make.strip().lower() == "apple":
-            new_name = datetime_object.strftime('%Y%m%d_%H%M%S') + inc + "i" + file_ext
+            new_name = datetime_object.strftime('%Y%m%d_%H%M%S') + str(inc) + "i" + file_ext
             print("Rename "+i + " to " + new_name)
             os.rename(i,new_name)
         else:
