@@ -17,7 +17,9 @@ def get_file_meta(file):
     return(exif)
 
 dir_list = os.listdir(".")
+inc = 0
 for i in dir_list:
+    inc+= 1
     if "DateTime" in get_file_meta(i).keys():
         str_date = get_file_meta(i)["DateTime"][:-1]
         fmt_date = "%Y:%m:%d %H:%M:%S"
@@ -25,7 +27,7 @@ for i in dir_list:
         make = str(get_file_meta(i)["Make"])
         file_ext = os.path.splitext(i)[1]
         if make.strip().lower() == "apple":
-            new_name = datetime_object.strftime('%Y%m%d_%H%M%S') + "i" + file_ext
+            new_name = datetime_object.strftime('%Y%m%d_%H%M%S') + inc + "i" + file_ext
             print("Rename "+i + " to " + new_name)
             os.rename(i,new_name)
         else:
