@@ -20,7 +20,7 @@ def get_file_meta(file):
         img.close()
     except:
         pass
-    return(exif)
+    return exif
 
 #dir_list = os.listdir(".")
 dir_list = glob.glob("*.MOV")
@@ -36,10 +36,10 @@ for i in tqdm(dir_list):
         finally:
             parser = None
             metadata
-            
+
         fmt_date = "%Y:%m:%d %H:%M:%S"
         new_name = datetime_object.strftime('%Y%m%d_%H%M%S') + str(inc) + "i" + file_ext
-        print("Rename "+i + " to " + new_name)  
+        print("Rename "+i + " to " + new_name)
         os.rename(i,new_name)
 
     if "DateTime" in get_file_meta(i).keys():
@@ -53,5 +53,3 @@ for i in tqdm(dir_list):
             os.re(i,new_name)
         else:
             print("Skip " + i + " make: " + make)
-
-
