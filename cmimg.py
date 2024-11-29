@@ -1,11 +1,11 @@
 import os
+import glob
 from datetime import datetime
 import PIL.Image
 import PIL.ExifTags
 from hachoir.parser import createParser
 from hachoir.metadata import extractMetadata
 from tqdm import tqdm
-import glob
 
 
 def get_file_meta(file):
