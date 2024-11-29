@@ -24,32 +24,32 @@ def get_file_meta(file):
 
 #dir_list = os.listdir(".")
 dir_list = glob.glob("*.MOV")
-inc = 0
+INC = 0
 for i in tqdm(dir_list):
-    inc+= 1
+    INC+= 1
     file_ext = os.path.splitext(i)[1]
     if file_ext.lower() == ".mov":
         try:
-            parser = createParser(i)
+            PARSER = createParser(i)
             metadata = extractMetadata(parser)
             datetime_object = metadata.get('creation_date')
         finally:
-            parser = None
+            PARSER = None
             metadata
 
-        fmt_date = "%Y:%m:%d %H:%M:%S"
+        FMT_DATE = "%Y:%m:%d %H:%M:%S"
         new_name = datetime_object.strftime('%Y%m%d_%H%M%S') + str(inc) + "i" + file_ext
         print("Rename "+i + " to " + new_name)
         os.rename(i,new_name)
 
     if "DateTime" in get_file_meta(i).keys():
         str_date = get_file_meta(i)["DateTime"][:-1]
-        fmt_date = "%Y:%m:%d %H:%M:%S"
-        datetime_object = datetime.strptime(str_date, fmt_date )
-        make = str(get_file_meta(i)["Make"])
-        if make.strip().lower() == "apple":
-            new_name = datetime_object.strftime('%Y%m%d_%H%M%S') + str(inc) + "i" + file_ext
+        FMT_DATE = "%Y:%m:%d %H:%M:%S"
+        datetime_object = datetime.strptime(str_date, FMT_DATE )
+        MAKE = str(get_file_meta(i)["Make"])
+        if MAKE.strip().lower() == "apple":
+            new_name = datetime_object.strftime('%Y%m%d_%H%M%S') + str(INC) + "i" + file_ext
             print("Rename "+i + " to " + new_name)
             os.re(i,new_name)
         else:
-            print("Skip " + i + " make: " + make)
+            print("Skip " + i + " make: " + MAKE)
