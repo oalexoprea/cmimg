@@ -18,8 +18,8 @@ def get_file_meta(file):
             if k in PIL.ExifTags.TAGS
         }
         img.close()
-    except:
-        pass
+    except Exception, e:
+        print(e)
     return exif
 
 #dir_list = os.listdir(".")
