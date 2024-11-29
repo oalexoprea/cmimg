@@ -31,14 +31,14 @@ for i in tqdm(dir_list):
     if file_ext.lower() == ".mov":
         try:
             PARSER = createParser(i)
-            metadata = extractMetadata(parser)
+            metadata = extractMetadata(PARSER)
             datetime_object = metadata.get('creation_date')
         finally:
             PARSER = None
-            metadata
+
 
         FMT_DATE = "%Y:%m:%d %H:%M:%S"
-        new_name = datetime_object.strftime('%Y%m%d_%H%M%S') + str(inc) + "i" + file_ext
+        new_name = datetime_object.strftime('%Y%m%d_%H%M%S') + str(INC) + "i" + file_ext
         print("Rename "+i + " to " + new_name)
         os.rename(i,new_name)
 
