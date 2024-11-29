@@ -18,7 +18,7 @@ def get_file_meta(file):
             if k in PIL.ExifTags.TAGS
         }
         img.close()
-    except Exception, e:
+    except Exception as e:
         print(e)
     return exif
 
