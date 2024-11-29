@@ -1,3 +1,4 @@
+"""Module providing a function for printing renaming files."""
 import os
 import glob
 from datetime import datetime
@@ -7,7 +8,7 @@ from hachoir.parser import createParser
 from hachoir.metadata import extractMetadata
 from tqdm import tqdm
 
-
+"""Module providing a function for meta info."""
 def get_file_meta(file):
     exif = {}
     try:
